@@ -13,7 +13,7 @@
 
 1. 安装依赖
 
-2. 修改 `config.yaml` 文件，填入自己的学号、密码、选课信息
+2. 修改 `config.yaml` 文件，填入自己的学号、密码、选课批次
 
 > 您可能需要自行复制一份 `config.yaml.template` 文件，并将其命名为 `config.yaml`
 

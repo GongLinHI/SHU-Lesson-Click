@@ -2,6 +2,7 @@ import re
 import time
 
 import pandas as pd
+import yaml
 from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -19,8 +20,10 @@ class LessonSpider:
     def __init__(self):
         self.driver = self.initialize()
         self.wait = WebDriverWait(self.driver, 10, poll_frequency=0.001)
-        self.N: int = 1000  # 最大查询次数
-        self.batch = '2024-2025学年 冬季学期'  # 选课批次，用于导出结果
+        with open('config.yaml', 'r', encoding='utf-8') as file:
+            config = yaml.safe_load(file)
+        self.N: int = config['maxQuery']  # 最大查询次数
+        self.batch = config['batch']  # 选课批次，用于导出结果
 
     def initialize(self, options=None):
         if options is None:

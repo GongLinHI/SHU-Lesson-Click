@@ -1,2 +1,4 @@
 username: 'YOUR_USERNAME'
 password: 'YOUR_PASSWORD'
+maxQuery: 1000 #最大查询次数
+batch: '2024-2025学年 冬季学期' #批次
