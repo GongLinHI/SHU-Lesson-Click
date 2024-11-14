@@ -13,10 +13,9 @@ class Shadow:
         info = Lesson(row_element)
         lesson_name = info.lesson_name
         lesson_time_and_place = info.lesson_time_and_place
-        print(info)
         # 只对体育课进行判断
-        if '公共体育' not in lesson_name:
-            return False
+        if '公共体育' not in lesson_name and '非全' not in lesson_name:
+            return True
         elif '公共体育' in lesson_name:
             if '星期四' in lesson_time_and_place:
                 return False

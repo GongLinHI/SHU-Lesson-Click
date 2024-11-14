@@ -187,7 +187,6 @@ class LessonSpider:
                 row_element = self.wait.until(EC.visibility_of_element_located((By.XPATH, row_xpath)))
                 # 能选，则选
                 if Shadow.can_choice(row_element):
-                    print(Lesson(row_element))
                     is_success = self.submit(row_element)
                     if is_success:
                         lesson_name = row_element.find_element(By.XPATH, './td[1]').text
@@ -214,15 +213,17 @@ class LessonSpider:
                 state = window1.find_element(By.CLASS_NAME, 'zeromodal-title1').text
                 state_message = window1.find_element(By.CLASS_NAME, 'zeromodal-title2').text
                 window1.find_element(By.XPATH, './/button[text()="确定"]').click()
+                lesson_time = row_element.find_element(By.XPATH, './td[7]').text
+                print(lesson_name, lesson_time, state)
+                print(state_message)
                 if '成功' in state:
-                    lesson_time = row_element.find_element(By.XPATH, './td[7]').text
-                    print(lesson_name, lesson_time, state, state_message)
                     return True
                 elif '失败' in state:
-                    print(lesson_name, lesson_time, state, state_message)
                     return False
                 elif '确定要选择吗？' in state:
                     pass
+            else:
+                return True
 
     def get_info(self, row_element: WebElement):
         row = []

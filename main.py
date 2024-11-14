@@ -11,4 +11,4 @@ if __name__ == "__main__":
 
     lesson2 = LessonQuery('公共课', "学术英语写作与交流", school="管理学院")
     spider.query_lesson(lesson2)
-    spider.get_result_csv()
+    # spider.get_result_csv()
